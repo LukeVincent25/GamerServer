@@ -48,7 +48,7 @@ namespace GameServer
                     clients[i].tcp.Connect(_client);
                     return;
                 }
-            }
+            } 
 
             Console.WriteLine($"{_client.Client.RemoteEndPoint} failed to connect: Server full!");
         }
