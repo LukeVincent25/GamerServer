@@ -48,7 +48,7 @@ namespace GamerServer
                     sampleY = xIndex / scale + offsetY;
 
                     // TODO: Find alternative perlin noise machine
-                    noise = Mathf.PerlinNoise(sampleX, sampleY);
+                    //noise = Mathf.PerlinNoise(sampleX, sampleY);
                     noiseMap[xIndex, yIndex] = noise;
                 }
             }
