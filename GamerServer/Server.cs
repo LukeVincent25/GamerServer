@@ -21,6 +21,7 @@ namespace GameServer
         {
             MaxPlayers = _maxPlayers;
             Port = _port;
+            //ip = Constants.IP_ADDRESS;
 
             Console.WriteLine("Starting server...");
             InitializeServerData();
@@ -32,7 +33,7 @@ namespace GameServer
             udpListener = new UdpClient(Port);
             udpListener.BeginReceive(UDPReceiveCallback, null);
 
-            Console.WriteLine($"Server started on port {Port}.");
+            Console.WriteLine($"Server started on port {Port}");
         }
 
         private static void TCPConnectCallback(IAsyncResult _result)
@@ -117,8 +118,7 @@ namespace GameServer
 
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
-                { (int)ClientPackets.updTestReceived, ServerHandle.UDPTestReceived }
+                { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived }
             };
             Console.WriteLine("Initialized packets.");
         }
