@@ -1,6 +1,7 @@
 ﻿using GamerServer;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GameServer
@@ -81,6 +82,19 @@ namespace GameServer
                 _packet.Write(_player.rotation);
 
                 SendTCPData(_toClient, _packet);
+            }
+        }
+
+        public static void PlayerPosition(Player _player)
+        {
+
+            Console.WriteLine($"Sending Player data over UDP:  {_player.id} {_player.position}");
+            using (Packet _packet = new Packet((int)ServerPackets.playerPosition))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.position);
+
+                SendUDPDataToAll(_player.id, _packet);
             }
         }
         #endregion
